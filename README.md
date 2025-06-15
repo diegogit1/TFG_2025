@@ -18,6 +18,11 @@ Para realizar el ataque que te proporcionan las cartas activas pulsa "F" (esta a
 
 En el backend hay varias dependencias necesarias para que la API funcione
 
+Los pasos para instalar las dependencias necesarias son:
+cd DESCARGAS\TFG_2025-main\API_TFG
+(Este es un ejemplo de cd para la mayoría de usuarios, si lo tienes en otra ruta diferente a descargas/tienes las rutas en inglés deberás cambiar esa parte por la ruta correcta)
+
+Ya estando en la ruta correcta deberás usar este comando
 pip install -r requirements.txt
 
-Utiliza este comando en el proyecto para instalar las dependencias
+Tras esto al ejecutar el exe del juego ya se levantará correctamente la api

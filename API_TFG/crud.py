@@ -69,5 +69,3 @@ def actualizar_puntuacion(nombre: str, nueva_puntuacion: int, nuevo_tiempo: floa
     else:
         return {"mensaje": "La puntuación es menor, no se actualiza"}
 
-
-
