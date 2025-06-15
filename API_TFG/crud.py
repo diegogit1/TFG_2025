@@ -54,16 +54,20 @@ def get_puntuacion(nombre: str):
 def actualizar_puntuacion(nombre: str, nueva_puntuacion: int, nuevo_tiempo: float):
     db: Session = SessionLocal()
     usuario = db.query(Usuario).filter_by(nombre=nombre).first()
+
     if not usuario:
         raise HTTPException(status_code=404, detail="No encontrado")
 
-    if (nueva_puntuacion > usuario.puntuacion) or \
-       (nueva_puntuacion == usuario.puntuacion and nuevo_tiempo < usuario.tiempo):
-        usuario.puntuacion = nueva_puntuacion
-        usuario.tiempo = nuevo_tiempo
-        db.commit()
-        return {"mensaje": "Puntuación y tiempo actualizados"}
+    if nueva_puntuacion >= usuario.puntuacion:
+        if nuevo_tiempo <= usuario.tiempo or usuario.tiempo == 0:
+            usuario.puntuacion = nueva_puntuacion
+            usuario.tiempo = nuevo_tiempo
+            db.commit()
+            return {"mensaje": "Puntuación y tiempo actualizados"}
+        else:
+            return {"mensaje": "El tiempo no mejora, no se actualiza"}
+    else:
+        return {"mensaje": "La puntuación es menor, no se actualiza"}
 
-    return {"mensaje": "No se superó la puntuación y tiempo existentes"}
 
 
