@@ -2,6 +2,8 @@
 
 Este es el repositorio del TFG de Diego González
 
+Este proyecto consta de un Backend (API Y DB) y Frontend (juego hecho en Unity)
+
 
 # CONTROLES DEL VIDEOJUEGO
 
