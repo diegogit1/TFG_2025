@@ -4,7 +4,7 @@ using TMPro;
 public class RegistroUI : MonoBehaviour
 {
     public TMP_InputField inputRegistroNombre;
-    public TMP_InputField inputRegistroPassword;  // Nuevo campo para contraseña
+    public TMP_InputField inputRegistroPassword;
     public UIManager uiManager;
 
     public void BotonRegistrar()

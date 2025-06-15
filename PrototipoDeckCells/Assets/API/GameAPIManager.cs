@@ -8,7 +8,6 @@ public class GameAPIManager : MonoBehaviour
     public static GameAPIManager instance;
     private string baseUrl = "http://127.0.0.1:8000";
 
-    // Guarda el token tras hacer login
     public string token = "";
 
     void Awake()
@@ -24,7 +23,6 @@ public class GameAPIManager : MonoBehaviour
         }
     }
 
-    // Registro
     public IEnumerator RegistrarUsuario(string nombre, string password, Action<bool> callback)
     {
         string json = $"{{\"nombre\": \"{nombre}\", \"password\": \"{password}\"}}";
@@ -45,7 +43,6 @@ public class GameAPIManager : MonoBehaviour
         }
     }
 
-    // Login
     public IEnumerator LoginUsuario(string nombre, string password, Action<string> callback)
     {
         WWWForm form = new WWWForm();
@@ -89,7 +86,6 @@ public class GameAPIManager : MonoBehaviour
         public string token_type;
     }
 
-    // Modelo de datos
     [Serializable]
     public class ResultadoPartida
     {
@@ -97,7 +93,6 @@ public class GameAPIManager : MonoBehaviour
         public float tiempo;
     }
 
-    // Llamada pública
     public void EnviarResultados(int puntuacion, float tiempo)
     {
         ResultadoPartida data = new ResultadoPartida
@@ -110,7 +105,6 @@ public class GameAPIManager : MonoBehaviour
         StartCoroutine(EnviarPOST("/actualizar", json));
     }
 
-    // POST con token
     private IEnumerator EnviarPOST(string endpoint, string json)
     {
         UnityWebRequest request = new UnityWebRequest(baseUrl + endpoint, "POST");

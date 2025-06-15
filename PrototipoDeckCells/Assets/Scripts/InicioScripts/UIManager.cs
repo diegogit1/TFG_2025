@@ -13,11 +13,10 @@ public class UIManager : MonoBehaviour
     {
     if (sesionIniciada)
     {
-        MostrarSolo(panelMenu); // Ya se inició sesión durante esta sesión de juego
+        MostrarSolo(panelMenu); 
     }
     else
     {
-        // Si hay datos guardados de otra sesión anterior, los borramos solo si el juego ha sido reiniciado completamente
         if (!PlayerPrefs.HasKey("token"))
         {
             PlayerPrefs.DeleteKey("nombreJugador");

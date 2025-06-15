@@ -25,6 +25,6 @@ def create_access_token(data: dict, expires_delta: timedelta = None):
 def decode_token(token: str):
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        return payload.get("sub")  # normalmente es el username
+        return payload.get("sub")
     except JWTError:
         return None
