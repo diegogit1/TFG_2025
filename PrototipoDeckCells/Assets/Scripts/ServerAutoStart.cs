@@ -15,14 +15,14 @@ public class ServerAutoStart : MonoBehaviour
     void Start()
     {
         // Detectar carpeta base y construir workingDirectory
-        string baseFolder = FindBaseFolder(Application.dataPath, "TFG_DIEGO_GONZALEZ");
+        string baseFolder = FindBaseFolder(Application.dataPath, new[] { "TFG_2025", "TFG_2025-main" });
         if (baseFolder == null)
         {
             UnityEngine.Debug.LogError("No se encontró la carpeta base 'TFG_DIEGO_GONZALEZ'. No se puede iniciar el servidor.");
             return;
         }
 
-        workingDirectory = Path.Combine(baseFolder, "TFG_2025", "API_TFG");
+        workingDirectory = Path.Combine(baseFolder, "API_TFG");
         UnityEngine.Debug.Log($"Working directory detectado: {workingDirectory}");
 
         if (IsServerRunning("127.0.0.1", 8000))
@@ -45,6 +45,22 @@ public class ServerAutoStart : MonoBehaviour
         }
         return directory?.FullName;
     }
+
+    string FindBaseFolder(string startPath, string[] folderNames)
+    {
+        var directory = new DirectoryInfo(startPath);
+
+        while (directory != null)
+        {
+        if (folderNames.Contains(directory.Name))
+            return directory.FullName;
+
+        directory = directory.Parent;
+        }
+
+        return null;
+    }
+
 
     void StartServerProcess()
     {
