@@ -26,3 +26,9 @@ Ya estando en la ruta correcta deberás usar este comando
 pip install -r requirements.txt
 
 Tras esto al ejecutar el exe del juego ya se levantará correctamente la api
+
+
+# INFORMACIÓN ADICIONAL
+
+Si el enlace directo al exe del juego no funciona el exe real está en TFG_2025\PrototipoDeckCells\Exe
+
